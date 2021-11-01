@@ -67,20 +67,20 @@ resource "aws_lb_target_group_attachment" "app_tglbat" {
 #   }
 # }
 # ####---- Redirect Rule -----####
-# resource "aws_lb_listener" "app_lblist" {
-#   load_balancer_arn = aws_lb.lb.arn
-#   port              = "80"
-#   protocol          = "HTTP"
+resource "aws_lb_listener" "app_lblist" {
+  load_balancer_arn = aws_lb.lb.arn
+  port              = "80"
+  protocol          = "HTTP"
 
-#   default_action {
-#     type = "redirect"
-#     redirect {
-#       port        = "443"
-#       protocol    = "HTTPS"
-#       status_code = "HTTP_301"
-#     }
-#   }
-# }
+  default_action {
+    type = "redirect"
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
 
 ########------- S3 Bucket -----------####
 resource "aws_s3_bucket" "logs_s3dev" {
