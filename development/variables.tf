@@ -1,8 +1,11 @@
-variable "domain_name" {
-  type        = string
-  description = "The domain name for the website."
+variable "path_to_public_key" {
+  description = "public key"
+  default     = "dockerkey.pub"
 }
-variable "bucket_name" {
-  type        = string
-  description = "The name of the bucket without the www. prefix. Normally domain_name."
+variable "instance_type" {
+description = "instance size for docker server"
+}
+variable "path" {
+  description = "private key"
+  default     = "dockerkey.pem"
 }
