@@ -55,17 +55,18 @@ resource "aws_lb_target_group_attachment" "app_tglbat" {
 }
 
 ####-------- SSL Cert ------#####
-# resource "aws_lb_listener" "app_lblist2" {
-#   load_balancer_arn = aws_lb.lb.arn
-#   port              = "443"
-#   protocol          = "HTTPS"
-#   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-#   certificate_arn   = "arn:aws:acm:us-east-1:901445516958:certificate/38e7fca6-b2fb-43ab-b31f-cbb47459a2f4"
-#   default_action {
-#     type             = "forward"
-#     target_group_arn = aws_lb_target_group.app_tglb.arn
-#   }
-# }
+resource "aws_lb_listener" "app_lblist2" {
+  load_balancer_arn = aws_lb.lb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
+  certificate_arn   = "id=arn:aws:acm:us-east-1:901445516958:certificate/e21be5a1-e556-4cef-a777-392868118878"
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app_tglb.arn
+  }
+}
+
 # ####---- Redirect Rule -----####
 resource "aws_lb_listener" "app_lblist" {
   load_balancer_arn = aws_lb.lb.arn
