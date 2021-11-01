@@ -6,7 +6,7 @@ resource "aws_instance" "server" {
   key_name               = aws_key_pair.mykeypair.key_name
   vpc_security_group_ids = [aws_security_group.ec2-sg.id]
   tags = merge(local.common_tags,
-    { Name = "-server"
+    { Name = "docker-server-dev"
   Application = "public" })
 }
 

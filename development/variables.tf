@@ -3,7 +3,7 @@ variable "path_to_public_key" {
   default     = "dockerkey.pub"
 }
 variable "instance_type" {
-description = "instance size for docker server"
+  description = "instance size for docker server"
 }
 variable "path" {
   description = "private key"
