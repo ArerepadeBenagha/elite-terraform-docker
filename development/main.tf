@@ -5,21 +5,7 @@ resource "aws_instance" "server" {
   subnet_id              = aws_subnet.main-public-1.id
   key_name               = aws_key_pair.mykeypair.key_name
   vpc_security_group_ids = [aws_security_group.ec2-sg.id]
-    connection {
-    # The default username for our AMI
-    user        = "ubuntu"
-    host        = self.public_ip
-    type        = "ssh"
-    private_key = file(var.path)
-  }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose",
-      "sudo chmod +x /usr/local/bin/docker-compose",
-      "sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose",
-      "docker-compose --version"
-    ]
-  }
+
   tags = merge(local.common_tags,
     { Name = "docker-server-dev"
   Application = "public" })
